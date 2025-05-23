@@ -65,7 +65,7 @@ def wind_direction(degrees):
 # Streamlit layout
 st.set_page_config(layout="wide", page_title="Weather Dashboard 🌦️")
 st.markdown("<h3 style='text-align: left;'>🌦️ Weather Dashboard</h3>", unsafe_allow_html=True)
-st.markdown('<style>div.block-container {padding-top: 2rem; padding-bottom: 0rem;}</style>', unsafe_allow_html=True)
+st.markdown('<style>div.block-container {padding-top: 3rem; padding-bottom: 0rem;}</style>', unsafe_allow_html=True)
 
 if "selected_city" not in st.session_state:
     st.session_state.selected_city = "Warsaw"
