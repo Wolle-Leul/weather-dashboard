@@ -2,7 +2,7 @@
 
 A clean, professional, and interactive **Streamlit** dashboard that displays real-time weather updates, local time, moon phase images, and key climate insights — perfect for personal or portfolio use.
 
-![screenshot](moon_phases/full_moon.png) 
+![screenshot](moon_phases/screenshot.png)
 
 ---
 
