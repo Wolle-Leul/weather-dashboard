@@ -1,2 +1,31 @@
-# weather-dashboard
-A visually stunning, interactive weather dashboard built with Streamlit, powered by OpenWeatherMap &amp; OpenCage APIs. Displays real-time weather, local time, moon phase imagery, and KPIs — perfect for portfolios and live deployments.
+# 🌦️ Weather Vision Dashboard
+
+A clean, professional, and interactive **Streamlit** dashboard that displays real-time weather updates, local time, moon phase images, and key climate insights — perfect for personal or portfolio use.
+
+![screenshot](moon_phases/full_moon.png) <!-- Replace with actual dashboard screenshot later -->
+
+---
+
+## ✨ Features
+
+- 🌍 City-based weather search
+- 🌡️ Temperature, humidity, pressure, wind & visibility
+- 🌕 Moon phase with image preview
+- 🗺️ Live location map using Folium
+- 📊 KPIs and smart insights (e.g. wind chill, comfort index)
+- 🔐 API key management with Streamlit Secrets
+
+---
+
+## 🚀 Live Demo
+
+👉 [Click here to view on Streamlit Cloud](https://weather-dashboard-dtvcxgwg5kvanymmqqlufq.streamlit.app/)
+
+---
+
+## 🔧 Setup Instructions
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/your-username/weather-vision-dashboard.git
+cd weather-vision-dashboard
