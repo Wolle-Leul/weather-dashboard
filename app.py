@@ -90,6 +90,7 @@ else:
         sunrise = datetime.fromtimestamp(weather['sunrise'], tz=timezone).strftime('%I:%M %p')
         sunset = datetime.fromtimestamp(weather['sunset'], tz=timezone).strftime('%I:%M %p')
 
+
         # --- 3 Columns in a container ---
         with st.container():
             col1, col2, col3 = st.columns([1.4, 1.6, 1.4], gap="small")
@@ -158,11 +159,18 @@ else:
                 else:
                     st.markdown(f"🌕 Moon: {moon}")
 
-        # --- KPIs Block (Now close to main layout) ---
+            # 🔧 Spacer to Equalize Column Heights
+            with col1:
+                st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+            with col2:
+                st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+            with col3:
+                st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+
+        # ✅ KPIs attached tightly below
         st.markdown("### 📊 KPIs")
         k1, k2, k3, k4 = st.columns(4)
         k1.metric("Pressure", f"{weather['pressure']} hPa")
         k2.metric("Humidity", f"{weather['humidity']}%")
         k3.metric("Wind", f"{weather['wind']} km/h")
         k4.metric("Visibility", f"{weather['visibility']} km")
-
