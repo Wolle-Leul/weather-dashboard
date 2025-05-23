@@ -11,12 +11,6 @@ import os
 OPENCAGE_API = st.secrets["OPENCAGE_API"]
 WEATHER_API = st.secrets["WEATHER_API"]
 
-MOON_PHASE_EMOJIS = {
-    "New Moon": "🌑", "Waxing Crescent": "🌒", "First Quarter": "🌓",
-    "Waxing Gibbous": "🌔", "Full Moon": "🌕", "Waning Gibbous": "🌖",
-    "Last Quarter": "🌗", "Waning Crescent": "🌘"
-}
-
 def geocode_city(city):
     res = requests.get(f'https://api.opencagedata.com/geocode/v1/json?q={city}&key={OPENCAGE_API}').json()
     if res['results']:
@@ -62,7 +56,7 @@ def wind_direction(degrees):
     ix = round(degrees / 45) % 8
     return dirs[ix]
 
-# Streamlit layout
+# --- Streamlit Layout ---
 st.set_page_config(layout="wide", page_title="Weather Dashboard 🌦️")
 st.markdown("<h3 style='text-align: left;'>🌦️ Weather Dashboard</h3>", unsafe_allow_html=True)
 st.markdown('<style>div.block-container {padding-top: 3rem; padding-bottom: 0rem;}</style>', unsafe_allow_html=True)
@@ -97,6 +91,7 @@ else:
 
         col1, col2, col3 = st.columns([1.4, 1.6, 1.4])
 
+        # --- Column 1: Info + Conditions ---
         with col1:
             col1a, col1b = st.columns(2)
             with col1a:
@@ -116,11 +111,13 @@ else:
                 st.markdown(f"- 👁️ **Visibility:** {weather['visibility']} km")
                 st.markdown(f"- 🌎 **Lat/Lon:** {lat:.2f}, {lon:.2f}")
 
+        # --- Column 2: Map ---
         with col2:
             m = folium.Map(location=[lat, lon], zoom_start=10, tiles='CartoDB dark_matter')
             folium.Marker([lat, lon], popup=city.title()).add_to(m)
-            st_folium(m, width=640, height=360)
+            st_folium(m, width=640, height=320)  # Slightly reduced height
 
+        # --- Column 3: Insights + Moon ---
         with col3:
             st.markdown("#### 🔎 Additional Insights")
             comfort = "Moderate"
@@ -147,7 +144,7 @@ else:
             st.warning(f"🚗 Visibility: {vis_cat}")
             st.markdown(f"⏳ **Day Length:** `{day_length}`")
 
-            # Show moon image instead of emoji
+            # Moon phase image
             image_name = moon.lower().replace(" ", "_") + ".png"
             image_path = f"moon_phases/{image_name}"
             if os.path.exists(image_path):
@@ -155,9 +152,14 @@ else:
             else:
                 st.markdown(f"🌕 **Moon:** {moon}")
 
-        st.markdown("### 📊 KPIs")
-        kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-        kpi1.metric("Pressure", f"{weather['pressure']} hPa")
-        kpi2.metric("Humidity", f"{weather['humidity']}%")
-        kpi3.metric("Wind", f"{weather['wind']} km/h")
-        kpi4.metric("Visibility", f"{weather['visibility']} km")
+        # --- KPIs Section (near columns, not far below) ---
+        with st.container():
+            st.markdown("### 📊 KPIs")
+            kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+            kpi1.metric("Pressure", f"{weather['pressure']} hPa")
+            kpi2.metric("Humidity", f"{weather['humidity']}%")
+            kpi3.metric("Wind", f"{weather['wind']} km/h")
+            kpi4.metric("Visibility", f"{weather['visibility']} km")
+
+        # Optional Spacer
+        st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
