@@ -2,7 +2,7 @@
 
 A clean, professional, and interactive **Streamlit** dashboard that displays real-time weather updates, local time, moon phase images, and key climate insights — perfect for personal or portfolio use.
 
-![screenshot](moon_phases/full_moon.png) <!-- Replace with actual dashboard screenshot later -->
+![screenshot](moon_phases/full_moon.png) 
 
 ---
 
@@ -22,10 +22,3 @@ A clean, professional, and interactive **Streamlit** dashboard that displays rea
 👉 [Click here to view on Streamlit Cloud](https://weather-dashboard-dtvcxgwg5kvanymmqqlufq.streamlit.app/)
 
 ---
-
-## 🔧 Setup Instructions
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/your-username/weather-vision-dashboard.git
-cd weather-vision-dashboard
